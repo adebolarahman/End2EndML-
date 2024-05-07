@@ -1,6 +1,6 @@
 import sys
-from src.logger import logging
-import logging
+from src.logger import logging,create_log
+#import logging
 def error_report_retails(err: str,err_detail:sys) -> str:
     """
     function that takes in two parameters, err and err_detail, which are of type string and sys respectively. 
@@ -37,5 +37,6 @@ if __name__=="__main__":
     try:
         a=1/0
     except Exception as e:
+        create_log()
         logging.info('Undefined Error!')
         raise CustomException(e, sys)
