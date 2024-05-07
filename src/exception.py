@@ -1,5 +1,5 @@
 import sys
-#from src.logger import logging,create_log
+from src.logger import logging
 import logging
 def error_report_retails(err: str,err_detail:sys) -> str:
     """
@@ -11,7 +11,7 @@ def error_report_retails(err: str,err_detail:sys) -> str:
     _,_,exc_tb=err_detail.exc_info()
 
     filename=exc_tb.tb_frame.f_code.co_filename
-    err_msg="This error occured in the python file:  [{0}] on line number [{1}] with error message [{2}]".format(
+    err_msg="This error occured in the python file:  [{0}] on line number [{1}] with error message  [{2}]".format(
     filename,exc_tb.tb_lineno,str(err))
     return err_msg
 class CustomException(Exception):

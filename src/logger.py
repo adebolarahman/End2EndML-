@@ -20,6 +20,6 @@ def create_log():
     level=logging.INFO,
   )
 
-#if __name__=="__main__":
-    #create_log()
-    #logging.info('Logging has started...')
+if __name__=="__main__":
+    create_log()
+    logging.info('Logging has started...')
