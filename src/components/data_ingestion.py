@@ -5,16 +5,28 @@ from src.logger import logging, create_log
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
-
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
 
 @dataclass
 class DataIngestionConfig:
+    """
+    This class defines the configuration settings for data ingestion, 
+    including the paths to the train, test, and raw data files. 
+    """
     train_data_path: str=os.path.join('artifacts',"train.csv")
     test_data_path: str=os.path.join('artifacts',"test.csv")
     raw_data_path: str=os.path.join('artifacts',"data.csv")
 
 
 class DataIngestion:
+
+    """This class handles the data ingestion process by reading the data as dataframe, 
+    splitting the dataset into train and test sets, and saving the data to the specified paths.
+    :param self: reference to current instance of the class
+    :param ingestion_config: object containing data ingestion configuration parameters
+    :return: paths to train and test data sets
+    """
     def __init__(self):
         self.ingestion_config=DataIngestionConfig()
 
@@ -50,5 +62,5 @@ class DataIngestion:
 if __name__=="__main__":
     obj=DataIngestion()
     train_data,test_data=obj.initiate_data_ingestion()
-
-print(train_data)
+    data_tranformation =DataTransformation()
+    data_tranformation.initiate_data_transformation(train_data,test_data)
